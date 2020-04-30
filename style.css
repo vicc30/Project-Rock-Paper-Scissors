@@ -1,0 +1,60 @@
+html {
+    font-size: 10px;
+    background: url(https://apps-cdn.athom.com/app/com.gruijter.rock/1/4368ac04-22ec-4de3-8897-3e52e39f110e/assets/images/large.jpg) bottom center;
+    background-size: auto;
+  }
+
+  body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+
+  .head {
+    display: flex;
+    flex: 1;
+    margin-top: 5vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgb(212, 207, 230);
+  }
+
+  .buttons {
+    display: flex;
+    flex: 1;
+    margin-top: 10vh;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .resultGame{
+    display: grid;
+    flex: 1;
+    margin-top: 12vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+  }
+
+  .option {
+    border: .4rem solid, rgb(46, 190, 82);
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    transition: all .2s ease;
+    width: 10rem;
+    text-align: center;
+    color: #ced7ff;
+    background: rgba(243, 0, 0, 0.4);
+    text-shadow: 0 0 .5rem black; 
+  }
+
+  .playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+  }
+

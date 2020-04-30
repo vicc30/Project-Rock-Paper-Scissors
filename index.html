@@ -3,79 +3,105 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Function scope example</title>
+  <title>Rock paper and scissors</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <h3 class="head">Please select a choice</h3>
+
+<div class="buttons">
+
+<button class="option" id="1" value="rock" onclick="playRound(this.value)">Rock</button>
+<button class="option" id="2" value="paper" onclick="playRound(this.value)">Paper</button>
+<button class="option" id="3" value="scissors" onclick="playRound(this.value)">Scissors</button>
+
+</div>
+
+<div class="resultGame">
+
+  <p>You have win <span id="win"></span> times.</p>
+  <p>You have lose <span id="lost"></span> times.
+  <p>You have draw <span id="draw"></span> times.</p>
+  <p id = "winner"></p>
+
+</div>
+
   <script>
 
-var choice="";
-var computerSelection="";
+    var choice = "";
+    var computerSelection="";
+    var win=1;
+    var lost=1;
+    var draw=1;
+    //initialize the first time
+    document.getElementById("win").innerHTML = 0;
+    document.getElementById("lost").innerHTML = 0;
+    document.getElementById("draw").innerHTML = 0;
+    alert("Select a choice: rock, paper or scissors?");
 
-function game(){
-  var win=0;
-  var lost=0;
-  var draw=0;
-  var res="";
-  for(var i=0;i<5;i++){
-    choice=window.prompt("Select a choice: rock, paper or scissors?","");
-    var str=playRound(choice, computerSelection);
+    //function that plays once with button selection in HTML return win lose or draw
+    function playRound(choice){
 
-      if(str.match(/Win/g)=="Win"){
-        alert(str);
-        win++;
-      } else if (str.match(/Lose/g)=="Lose"){
-        alert(str);
-        lost++;
-      
-      } else {
-        alert(str);
-        draw++;
+    computerSelection=computerPlay();
+
+    var gameResult = playOnce(choice, computerSelection);
+    
+    if(gameResult.match(/Win/g)=="Win"){
+      document.getElementById("win").innerHTML = win++;  
+         
+      } else if (gameResult.match(/Lose/g)=="Lose"){
+        document.getElementById("lost").innerHTML = lost++;
+  
+             } else {
+        document.getElementById("draw").innerHTML = draw++;
+  
       }
+      alert(gameResult);
+      console.log(gameResult);
   }
-  alert("You have win "+win+" times.\nYou have lose "+lost+" times.\nYou have draw "+draw+" times.\nThank you for playing");
-}
-
-function playRound(choice, computerSelection){
-
-  computerSelection=computerPlay();
-  var option = playerSelection(choice);
-
-  switch(option){
-          case "rock":
-
-            if(computerSelection == "scissors"){
-              return "You Win! Rock beats Scissors";
-            } else if (computerSelection == "paper"){
-              return "You Lose! Paper beats Rock";
-            } else {
-              return "Its a draw!";
-            }
-
-          case "paper":
-
-          if(computerSelection == "rock"){
-              return "You Win! Paper beats Rock";
-            } else if (computerSelection == "scissors"){
-              return "You Lose! Scissors beats Paper";
-            } else {
-              return "Its a draw!";
-            }
-          case "scissors":
-           if(computerSelection == "paper"){
-              return "You Win! Scissors beats paper";
-            } else if (computerSelection == "rock"){
-              return "You Lose! Rock beats Scissors";
-            } else {
-              return "Its a draw!";
-            }
-          
-        }
+ 
 
 
-}
+    //function that detect winner with onclick option selected
+    function playOnce(choice, computerSelection){ 
 
-    function computerPlay(){
+      switch(choice){
+        case "rock":
+
+          if(computerSelection == "scissors"){
+            return "You Win! Rock beats Scissors";
+          } else if (computerSelection == "paper"){
+            return "You Lose! Paper beats Rock";
+          } else {
+            return "Its a draw!";
+          }
+
+        case "paper":
+
+        if(computerSelection == "rock"){
+            return "You Win! Paper beats Rock";
+          } else if (computerSelection == "scissors"){
+            return "You Lose! Scissors beats Paper";
+          } else {
+            return "Its a draw!";
+          }
+        case "scissors":
+         if(computerSelection == "paper"){
+            return "You Win! Scissors beats paper";
+          } else if (computerSelection == "rock"){
+            return "You Lose! Rock beats Scissors";
+          } else {
+            return "Its a draw!";
+          }
+        
+      }
+
+    }
+
+
+    //function random selection 
+    function computerPlay(){ 
         var computer = Math.random()*100;
         if (computer <=33){
             return "rock";
@@ -84,12 +110,11 @@ function playRound(choice, computerSelection){
         } else {
             return "scissors";
         }
-    }
-
-    function playerSelection(choice){
-      return choice.toLowerCase();}
-    
+      }
 
   </script>
+
+
 </body>
+
 </html>
